@@ -3,11 +3,48 @@
 <head>
 <title>Play Song</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: white;
+    font-family: Arial, sans-serif;
+}
+#hiddenPlayer {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+button {
+    padding: 20px 30px;
+    font-size: 22px;
+    border-radius: 12px;
+}
+</style>
 </head>
-<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;">
-<button style="padding:20px;font-size:22px;border-radius:12px;padding:18px 28px;"
- onclick="window.location.href='spotify://track/6gwwbWZEU8PjnoZER3q49v'">
-▶ Play Song
-</button>
+<body>
+
+<!-- Unsichtbarer YouTube Player -->
+<iframe 
+    id="hiddenPlayer"
+    src="https://www.youtube.com/embed/rrodlA8_Jmg?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
+    frameborder="0"
+    allow="autoplay"
+></iframe>
+
+<!-- Play Button -->
+<button onclick="playMusic()">▶ Play Song</button>
+
+<script>
+function playMusic() {
+    document.getElementById('hiddenPlayer').src =
+        document.getElementById('hiddenPlayer').src + "&mute=0";
+}
+</script>
+
 </body>
 </html>
